@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -89,110 +90,123 @@ public class Panone extends JPanel implements ActionListener {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 125, 100, null); // see javadoc for more info on the parameters     
+        g.drawImage(image, 125, 100, null); // see javadoc for more info on the parameters
     }
 
     public void actionPerformed(ActionEvent evt) {
+        if (isX) {
+            System.out.println("Clicked - X :)");
+        } else if (!isX) {
+            System.out.println("Clicked - O :)");
+        }
         if (evt.getSource() == btn1) {
             if (isX) {
                 btn1.setText("X");
-                btn1.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn1.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn1.setText("O");
-                btn1.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn1.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn1.setEnabled(false);
         }
         if (evt.getSource() == btn2) {
             if (isX) {
                 btn2.setText("X");
-                btn2.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn2.setText("O");
-                btn2.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn2.setEnabled(false);
         }
         if (evt.getSource() == btn3) {
             if (isX) {
                 btn3.setText("X");
-                btn3.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn3.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn3.setText("O");
-                btn3.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn3.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn3.setEnabled(false);
         }
         if (evt.getSource() == btn4) {
             if (isX) {
                 btn4.setText("X");
-                btn4.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn4.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn4.setText("O");
-                btn4.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn4.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn4.setEnabled(false);
         }
-         if (evt.getSource() == btn5) {
+        if (evt.getSource() == btn5) {
             if (isX) {
                 btn5.setText("X");
-                btn5.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn5.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn5.setText("O");
-                btn5.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn5.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn5.setEnabled(false);
         }
-         if (evt.getSource() == btn6) {
+        if (evt.getSource() == btn6) {
             if (isX) {
                 btn6.setText("X");
-                btn6.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn6.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn6.setText("O");
-                btn6.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn6.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn6.setEnabled(false);
         }
-         if (evt.getSource() == btn7) {
+        if (evt.getSource() == btn7) {
             if (isX) {
                 btn7.setText("X");
-                btn7.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn7.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn7.setText("O");
-                btn7.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn7.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn7.setEnabled(false);
         }
         if (evt.getSource() == btn8) {
             if (isX) {
                 btn8.setText("X");
-                btn8.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn8.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn8.setText("O");
-                btn8.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn8.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn8.setEnabled(false);
         }
-         if (evt.getSource() == btn9) {
+        if (evt.getSource() == btn9) {
             if (isX) {
                 btn9.setText("X");
-                btn9.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn9.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
                 btn9.setText("O");
-                btn9.setFont(new Font("Serif", Font.PLAIN, 35));
+                btn9.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
+            btn9.setEnabled(false);
         }
-        System.out.println("Clicked");
         revalidate();
         repaint();
     }

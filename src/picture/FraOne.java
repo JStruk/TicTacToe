@@ -10,11 +10,14 @@ import javax.swing.JFrame;
  *
  * @author struj3903
  */
-public class FraOne extends JFrame{
+public class FraOne extends JFrame {
+
     Panone pan = new Panone();
-    public FraOne(){ 
+
+    public FraOne() {
         pan.setLayout(null);
         setSize(500, 500);
         add(pan);
+
     }
 }
