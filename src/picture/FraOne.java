@@ -14,7 +14,7 @@ public class FraOne extends JFrame {
 
     Panone pan = new Panone();
 
-    public FraOne() {
+    public FraOne() throws Exception{
         pan.setLayout(null);
         setSize(500, 500);
         add(pan);

@@ -2,15 +2,24 @@ package picture;
 
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 public class Panone extends JPanel implements ActionListener {
 
@@ -24,9 +33,17 @@ public class Panone extends JPanel implements ActionListener {
     JButton btn7 = new JButton();
     JButton btn8 = new JButton();
     JButton btn9 = new JButton();
+    //InputStream in = new FileInputStream("Bruh-Sound.wav");
+    //AudioStream audioStream = new AudioStream(in);
     boolean isX = true;
+    private static AudioInputStream sound;
+    private static File fBruh;
+    public static Clip cBruh;
+    private static DataLine.Info info;
+    public Image img, img2, newimg;
 
-    public Panone() {
+    public Panone() throws Exception {
+
         btn1.setOpaque(false);
         btn1.setContentAreaFilled(false);
         btn1.setBorderPainted(false);
@@ -94,6 +111,20 @@ public class Panone extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent evt) {
+        try {
+            img = ImageIO.read(getClass().getResource("HeimerdingerSquare.png"));
+            img2 = ImageIO.read(getClass().getResource("avatar-105.png"));
+        } catch (IOException ex) {
+        }
+        fBruh = new File("Bruh-Sound.wav");
+        try {
+            AudioInputStream sound = AudioSystem.getAudioInputStream(fBruh);
+            info = new DataLine.Info(Clip.class, sound.getFormat());
+            cBruh = (Clip) AudioSystem.getLine(info);
+            cBruh.open(sound);
+        } catch (Exception ex) {
+            Logger.getLogger(Panone.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (isX) {
             System.out.println("Clicked - X :)");
         } else if (!isX) {
@@ -112,24 +143,40 @@ public class Panone extends JPanel implements ActionListener {
             btn1.setEnabled(false);
         }
         if (evt.getSource() == btn2) {
+            int nW = btn2.getWidth();
+            int nH = btn2.getHeight();
             if (isX) {
-                btn2.setText("X");
-                btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance(nW, nH, java.awt.Image.SCALE_SMOOTH);
+                btn2.setIcon(new ImageIcon(newimg));
+                btn2.setDisabledIcon(new ImageIcon(newimg));
+                //btn2.setText("X");
+                //btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
-                btn2.setText("O");
-                btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img.getScaledInstance(nW, nH, java.awt.Image.SCALE_SMOOTH);
+                btn2.setIcon(new ImageIcon(newimg));
+                btn2.setDisabledIcon(new ImageIcon(newimg));
+                //btn2.setText("O");
+                //btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
             btn2.setEnabled(false);
         }
         if (evt.getSource() == btn3) {
+            int nW = btn3.getWidth();
+            int nH = btn3.getHeight();
             if (isX) {
-                btn3.setText("X");
-                btn3.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance(nW, nH, java.awt.Image.SCALE_SMOOTH);
+                btn3.setIcon(new ImageIcon(newimg));
+                btn3.setDisabledIcon(new ImageIcon(newimg));
+                //btn3.setText("X");
+                //btn3.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
-                btn3.setText("O");
+                newimg = img.getScaledInstance(nW, nH, java.awt.Image.SCALE_SMOOTH);
+                btn3.setIcon(new ImageIcon(newimg));
+                btn3.setDisabledIcon(new ImageIcon(newimg));
+                //btn3.setText("O");
                 btn3.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
@@ -146,6 +193,7 @@ public class Panone extends JPanel implements ActionListener {
                 isX = true;
             }
             btn4.setEnabled(false);
+
         }
         if (evt.getSource() == btn5) {
             if (isX) {
@@ -207,6 +255,9 @@ public class Panone extends JPanel implements ActionListener {
             }
             btn9.setEnabled(false);
         }
+        cBruh.start();
+        cBruh.drain();
+
         revalidate();
         repaint();
     }
