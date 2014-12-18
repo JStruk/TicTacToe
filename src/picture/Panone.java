@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -33,6 +34,7 @@ public class Panone extends JPanel implements ActionListener {
     JButton btn7 = new JButton();
     JButton btn8 = new JButton();
     JButton btn9 = new JButton();
+    JLabel lblWin = new JLabel();
     boolean isX = true;
     private static AudioInputStream sound;
     private static File fBruh;
@@ -142,6 +144,7 @@ public class Panone extends JPanel implements ActionListener {
                 btn1.setDisabledIcon(new ImageIcon(newimg));
                 isX = true;
             }
+           
             btn1.setEnabled(false);
         }
         if (evt.getSource() == btn2) {
@@ -276,8 +279,6 @@ public class Panone extends JPanel implements ActionListener {
             btn9.setEnabled(false);
         }
         cBruh.start();
-        cBruh.drain();
-
         revalidate();
         repaint();
     }

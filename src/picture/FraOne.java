@@ -12,7 +12,7 @@ import javax.swing.JFrame;
  */
 public class FraOne extends JFrame {
 
-    Panone pan = new Panone();
+   public Panone pan = new Panone();
 
     public FraOne() throws Exception{
         pan.setLayout(null);
