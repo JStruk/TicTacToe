@@ -33,8 +33,6 @@ public class Panone extends JPanel implements ActionListener {
     JButton btn7 = new JButton();
     JButton btn8 = new JButton();
     JButton btn9 = new JButton();
-    //InputStream in = new FileInputStream("Bruh-Sound.wav");
-    //AudioStream audioStream = new AudioStream(in);
     boolean isX = true;
     private static AudioInputStream sound;
     private static File fBruh;
@@ -112,8 +110,8 @@ public class Panone extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent evt) {
         try {
-            img = ImageIO.read(getClass().getResource("HeimerdingerSquare.png"));
-            img2 = ImageIO.read(getClass().getResource("avatar-105.png"));
+            img = ImageIO.read(getClass().getResource("bruhguy.jpg"));
+            img2 = ImageIO.read(getClass().getResource("bruhgirl.jpg"));
         } catch (IOException ex) {
         }
         fBruh = new File("Bruh-Sound.wav");
@@ -131,13 +129,17 @@ public class Panone extends JPanel implements ActionListener {
             System.out.println("Clicked - O :)");
         }
         if (evt.getSource() == btn1) {
+            int nW = btn1.getWidth();
+            int nH = btn1.getHeight();
             if (isX) {
-                btn1.setText("X");
-                btn1.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn1.setIcon(new ImageIcon(newimg));
+                btn1.setDisabledIcon(new ImageIcon(newimg));
                 isX = false;
             } else if (!isX) {
-                btn1.setText("O");
-                btn1.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn1.setIcon(new ImageIcon(newimg));
+                btn1.setDisabledIcon(new ImageIcon(newimg));
                 isX = true;
             }
             btn1.setEnabled(false);
@@ -146,18 +148,16 @@ public class Panone extends JPanel implements ActionListener {
             int nW = btn2.getWidth();
             int nH = btn2.getHeight();
             if (isX) {
-                newimg = img2.getScaledInstance(nW, nH, java.awt.Image.SCALE_SMOOTH);
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
                 btn2.setIcon(new ImageIcon(newimg));
                 btn2.setDisabledIcon(new ImageIcon(newimg));
                 //btn2.setText("X");
                 //btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
-                newimg = img.getScaledInstance(nW, nH, java.awt.Image.SCALE_SMOOTH);
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
                 btn2.setIcon(new ImageIcon(newimg));
                 btn2.setDisabledIcon(new ImageIcon(newimg));
-                //btn2.setText("O");
-                //btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
             btn2.setEnabled(false);
@@ -166,91 +166,111 @@ public class Panone extends JPanel implements ActionListener {
             int nW = btn3.getWidth();
             int nH = btn3.getHeight();
             if (isX) {
-                newimg = img2.getScaledInstance(nW, nH, java.awt.Image.SCALE_SMOOTH);
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
                 btn3.setIcon(new ImageIcon(newimg));
                 btn3.setDisabledIcon(new ImageIcon(newimg));
-                //btn3.setText("X");
-                //btn3.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = false;
             } else if (!isX) {
-                newimg = img.getScaledInstance(nW, nH, java.awt.Image.SCALE_SMOOTH);
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
                 btn3.setIcon(new ImageIcon(newimg));
                 btn3.setDisabledIcon(new ImageIcon(newimg));
-                //btn3.setText("O");
-                btn3.setFont(new Font("Fawn Script", Font.PLAIN, 45));
                 isX = true;
             }
             btn3.setEnabled(false);
         }
         if (evt.getSource() == btn4) {
+            int nW = btn4.getWidth();
+            int nH = btn4.getHeight();
             if (isX) {
-                btn4.setText("X");
-                btn4.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn4.setIcon(new ImageIcon(newimg));
+                btn4.setDisabledIcon(new ImageIcon(newimg));
                 isX = false;
             } else if (!isX) {
-                btn4.setText("O");
-                btn4.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn4.setIcon(new ImageIcon(newimg));
+                btn4.setDisabledIcon(new ImageIcon(newimg));
                 isX = true;
             }
             btn4.setEnabled(false);
 
         }
         if (evt.getSource() == btn5) {
+            int nW = btn4.getWidth();
+            int nH = btn4.getHeight();
             if (isX) {
-                btn5.setText("X");
-                btn5.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn5.setIcon(new ImageIcon(newimg));
+                btn5.setDisabledIcon(new ImageIcon(newimg));
                 isX = false;
             } else if (!isX) {
-                btn5.setText("O");
-                btn5.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn5.setIcon(new ImageIcon(newimg));
+                btn5.setDisabledIcon(new ImageIcon(newimg));
                 isX = true;
             }
             btn5.setEnabled(false);
         }
         if (evt.getSource() == btn6) {
+            int nW = btn4.getWidth();
+            int nH = btn4.getHeight();
             if (isX) {
-                btn6.setText("X");
-                btn6.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn6.setIcon(new ImageIcon(newimg));
+                btn6.setDisabledIcon(new ImageIcon(newimg));
                 isX = false;
             } else if (!isX) {
-                btn6.setText("O");
-                btn6.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn6.setIcon(new ImageIcon(newimg));
+                btn6.setDisabledIcon(new ImageIcon(newimg));
                 isX = true;
             }
             btn6.setEnabled(false);
         }
         if (evt.getSource() == btn7) {
+            int nW = btn4.getWidth();
+            int nH = btn4.getHeight();
             if (isX) {
-                btn7.setText("X");
-                btn7.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn7.setIcon(new ImageIcon(newimg));
+                btn7.setDisabledIcon(new ImageIcon(newimg));
                 isX = false;
             } else if (!isX) {
-                btn7.setText("O");
-                btn7.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn7.setIcon(new ImageIcon(newimg));
+                btn7.setDisabledIcon(new ImageIcon(newimg));
                 isX = true;
             }
             btn7.setEnabled(false);
         }
         if (evt.getSource() == btn8) {
+            int nW = btn4.getWidth();
+            int nH = btn4.getHeight();
             if (isX) {
-                btn8.setText("X");
-                btn8.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn8.setIcon(new ImageIcon(newimg));
+                btn8.setDisabledIcon(new ImageIcon(newimg));
                 isX = false;
             } else if (!isX) {
-                btn8.setText("O");
-                btn8.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn8.setIcon(new ImageIcon(newimg));
+                btn8.setDisabledIcon(new ImageIcon(newimg));
                 isX = true;
             }
             btn8.setEnabled(false);
         }
         if (evt.getSource() == btn9) {
+            int nW = btn4.getWidth();
+            int nH = btn4.getHeight();
             if (isX) {
-                btn9.setText("X");
-                btn9.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn9.setIcon(new ImageIcon(newimg));
+                btn9.setDisabledIcon(new ImageIcon(newimg));
                 isX = false;
             } else if (!isX) {
-                btn9.setText("O");
-                btn9.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                btn9.setIcon(new ImageIcon(newimg));
+                btn9.setDisabledIcon(new ImageIcon(newimg));
                 isX = true;
             }
             btn9.setEnabled(false);
