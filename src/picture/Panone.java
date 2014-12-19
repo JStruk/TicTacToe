@@ -1,5 +1,6 @@
 package picture;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -110,176 +111,223 @@ public class Panone extends JPanel implements ActionListener {
         g.drawImage(image, 125, 100, null); // see javadoc for more info on the parameters
     }
 
-    public void actionPerformed(ActionEvent evt) {
-        try {
-            img = ImageIO.read(getClass().getResource("bruhguy.jpg"));
-            img2 = ImageIO.read(getClass().getResource("bruhgirl.jpg"));
-        } catch (IOException ex) {
-        }
-        fBruh = new File("Bruh-Sound.wav");
-        try {
-            AudioInputStream sound = AudioSystem.getAudioInputStream(fBruh);
-            info = new DataLine.Info(Clip.class, sound.getFormat());
-            cBruh = (Clip) AudioSystem.getLine(info);
-            cBruh.open(sound);
-        } catch (Exception ex) {
-            Logger.getLogger(Panone.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (isX) {
-            System.out.println("Clicked - X :)");
-        } else if (!isX) {
-            System.out.println("Clicked - O :)");
-        }
-        if (evt.getSource() == btn1) {
-            int nW = btn1.getWidth();
-            int nH = btn1.getHeight();
-            if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn1.setIcon(new ImageIcon(newimg));
-                btn1.setDisabledIcon(new ImageIcon(newimg));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn1.setIcon(new ImageIcon(newimg));
-                btn1.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
-            }
-           
-            btn1.setEnabled(false);
-        }
-        if (evt.getSource() == btn2) {
-            int nW = btn2.getWidth();
-            int nH = btn2.getHeight();
-            if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn2.setIcon(new ImageIcon(newimg));
-                btn2.setDisabledIcon(new ImageIcon(newimg));
-                //btn2.setText("X");
-                //btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn2.setIcon(new ImageIcon(newimg));
-                btn2.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
-            }
-            btn2.setEnabled(false);
-        }
-        if (evt.getSource() == btn3) {
-            int nW = btn3.getWidth();
-            int nH = btn3.getHeight();
-            if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn3.setIcon(new ImageIcon(newimg));
-                btn3.setDisabledIcon(new ImageIcon(newimg));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn3.setIcon(new ImageIcon(newimg));
-                btn3.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
-            }
-            btn3.setEnabled(false);
-        }
-        if (evt.getSource() == btn4) {
-            int nW = btn4.getWidth();
-            int nH = btn4.getHeight();
-            if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn4.setIcon(new ImageIcon(newimg));
-                btn4.setDisabledIcon(new ImageIcon(newimg));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn4.setIcon(new ImageIcon(newimg));
-                btn4.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
-            }
-            btn4.setEnabled(false);
+    class ColourChangeListener implements ActionListener {
 
-        }
-        if (evt.getSource() == btn5) {
-            int nW = btn4.getWidth();
-            int nH = btn4.getHeight();
-            if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn5.setIcon(new ImageIcon(newimg));
-                btn5.setDisabledIcon(new ImageIcon(newimg));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn5.setIcon(new ImageIcon(newimg));
-                btn5.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
+        public void actionPerformed(ActionEvent event) {
+            try {
+                img = ImageIO.read(getClass().getResource("bruhguy.jpg"));
+                img2 = ImageIO.read(getClass().getResource("bruhgirl.jpg"));
+            } catch (IOException ex) {
             }
-            btn5.setEnabled(false);
-        }
-        if (evt.getSource() == btn6) {
-            int nW = btn4.getWidth();
-            int nH = btn4.getHeight();
-            if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn6.setIcon(new ImageIcon(newimg));
-                btn6.setDisabledIcon(new ImageIcon(newimg));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn6.setIcon(new ImageIcon(newimg));
-                btn6.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
+            fBruh = new File("Bruh-Sound.wav");
+            try {
+                AudioInputStream sound = AudioSystem.getAudioInputStream(fBruh);
+                info = new DataLine.Info(Clip.class, sound.getFormat());
+                cBruh = (Clip) AudioSystem.getLine(info);
+                cBruh.open(sound);
+            } catch (Exception ex) {
+                Logger.getLogger(Panone.class.getName()).log(Level.SEVERE, null, ex);
             }
-            btn6.setEnabled(false);
-        }
-        if (evt.getSource() == btn7) {
-            int nW = btn4.getWidth();
-            int nH = btn4.getHeight();
+            BtnText btn = (BtnText) event.getSource();
             if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn7.setIcon(new ImageIcon(newimg));
-                btn7.setDisabledIcon(new ImageIcon(newimg));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn7.setIcon(new ImageIcon(newimg));
-                btn7.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
+                int nW = btn.getWidth();
+                int nH = btn.getHeight();
+                if (isX) {
+                    newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                    btn.setIcon(new ImageIcon(newimg));
+                    btn.setDisabledIcon(new ImageIcon(newimg));
+                    isX = false;
+                } else if (!isX) {
+                    newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+                    btn.setIcon(new ImageIcon(newimg));
+                    btn.setDisabledIcon(new ImageIcon(newimg));
+                    isX = true;
+                }
             }
-            btn7.setEnabled(false);
+            ActionListener colourChangeListener = new ColourChangeListener();
+            // all 3 buttons call the same listener
+            btn1.addActionListener(colourChangeListener);
+            btn2.addActionListener(colourChangeListener);
+            btn3.addActionListener(colourChangeListener);
+            btn4.addActionListener(colourChangeListener);
+            btn5.addActionListener(colourChangeListener);
+            btn6.addActionListener(colourChangeListener);
+            btn7.addActionListener(colourChangeListener);
+            btn8.addActionListener(colourChangeListener);
+            btn9.addActionListener(colourChangeListener);
         }
-        if (evt.getSource() == btn8) {
-            int nW = btn4.getWidth();
-            int nH = btn4.getHeight();
-            if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn8.setIcon(new ImageIcon(newimg));
-                btn8.setDisabledIcon(new ImageIcon(newimg));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn8.setIcon(new ImageIcon(newimg));
-                btn8.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
-            }
-            btn8.setEnabled(false);
-        }
-        if (evt.getSource() == btn9) {
-            int nW = btn4.getWidth();
-            int nH = btn4.getHeight();
-            if (isX) {
-                newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn9.setIcon(new ImageIcon(newimg));
-                btn9.setDisabledIcon(new ImageIcon(newimg));
-                isX = false;
-            } else if (!isX) {
-                newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
-                btn9.setIcon(new ImageIcon(newimg));
-                btn9.setDisabledIcon(new ImageIcon(newimg));
-                isX = true;
-            }
-            btn9.setEnabled(false);
-        }
-        cBruh.start();
-        revalidate();
-        repaint();
+        /* public void actionPerformed(ActionEvent evt) {
+
+         try {
+         img = ImageIO.read(getClass().getResource("bruhguy.jpg"));
+         img2 = ImageIO.read(getClass().getResource("bruhgirl.jpg"));
+         } catch (IOException ex) {
+         }
+         fBruh = new File("Bruh-Sound.wav");
+         try {
+         AudioInputStream sound = AudioSystem.getAudioInputStream(fBruh);
+         info = new DataLine.Info(Clip.class, sound.getFormat());
+         cBruh = (Clip) AudioSystem.getLine(info);
+         cBruh.open(sound);
+         } catch (Exception ex) {
+         Logger.getLogger(Panone.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         if (isX) {
+         System.out.println("Clicked - X :)");
+         } else if (!isX) {
+         System.out.println("Clicked - O :)");
+         }
+         if (evt.getSource() == btn1) {
+         int nW = btn1.getWidth();
+         int nH = btn1.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn1.setIcon(new ImageIcon(newimg));
+         btn1.setDisabledIcon(new ImageIcon(newimg));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn1.setIcon(new ImageIcon(newimg));
+         btn1.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+
+         btn1.setEnabled(false);
+         }
+         if (evt.getSource() == btn2) {
+         int nW = btn2.getWidth();
+         int nH = btn2.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn2.setIcon(new ImageIcon(newimg));
+         btn2.setDisabledIcon(new ImageIcon(newimg));
+         //btn2.setText("X");
+         //btn2.setFont(new Font("Fawn Script", Font.PLAIN, 45));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn2.setIcon(new ImageIcon(newimg));
+         btn2.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+         btn2.setEnabled(false);
+         }
+         if (evt.getSource() == btn3) {
+         int nW = btn3.getWidth();
+         int nH = btn3.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn3.setIcon(new ImageIcon(newimg));
+         btn3.setDisabledIcon(new ImageIcon(newimg));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn3.setIcon(new ImageIcon(newimg));
+         btn3.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+         btn3.setEnabled(false);
+         }
+         if (evt.getSource() == btn4) {
+         int nW = btn4.getWidth();
+         int nH = btn4.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn4.setIcon(new ImageIcon(newimg));
+         btn4.setDisabledIcon(new ImageIcon(newimg));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn4.setIcon(new ImageIcon(newimg));
+         btn4.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+         btn4.setEnabled(false);
+
+         }
+         if (evt.getSource() == btn5) {
+         int nW = btn4.getWidth();
+         int nH = btn4.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn5.setIcon(new ImageIcon(newimg));
+         btn5.setDisabledIcon(new ImageIcon(newimg));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn5.setIcon(new ImageIcon(newimg));
+         btn5.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+         btn5.setEnabled(false);
+         }
+         if (evt.getSource() == btn6) {
+         int nW = btn4.getWidth();
+         int nH = btn4.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn6.setIcon(new ImageIcon(newimg));
+         btn6.setDisabledIcon(new ImageIcon(newimg));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn6.setIcon(new ImageIcon(newimg));
+         btn6.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+         btn6.setEnabled(false);
+         }
+         if (evt.getSource() == btn7) {
+         int nW = btn4.getWidth();
+         int nH = btn4.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn7.setIcon(new ImageIcon(newimg));
+         btn7.setDisabledIcon(new ImageIcon(newimg));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn7.setIcon(new ImageIcon(newimg));
+         btn7.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+         btn7.setEnabled(false);
+         }
+         if (evt.getSource() == btn8) {
+         int nW = btn4.getWidth();
+         int nH = btn4.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn8.setIcon(new ImageIcon(newimg));
+         btn8.setDisabledIcon(new ImageIcon(newimg));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn8.setIcon(new ImageIcon(newimg));
+         btn8.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+         btn8.setEnabled(false);
+         }
+         if (evt.getSource() == btn9) {
+         int nW = btn4.getWidth();
+         int nH = btn4.getHeight();
+         if (isX) {
+         newimg = img.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn9.setIcon(new ImageIcon(newimg));
+         btn9.setDisabledIcon(new ImageIcon(newimg));
+         isX = false;
+         } else if (!isX) {
+         newimg = img2.getScaledInstance((nW - 15), (nH - 15), java.awt.Image.SCALE_SMOOTH);
+         btn9.setIcon(new ImageIcon(newimg));
+         btn9.setDisabledIcon(new ImageIcon(newimg));
+         isX = true;
+         }
+         btn9.setEnabled(false);
+         }
+         cBruh.start();
+         revalidate();
+         repaint();
+         }*/
     }
 }
